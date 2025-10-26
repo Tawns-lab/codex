@@ -12,7 +12,22 @@ This framework implements a **Multi-Manifold Forensic Engine** that uses distrib
 - **Variational Encoding**: Robust latent representations using VAE-based manifold learning
 - **Cross-scale Coherence**: Integrity validation through coherence constraints across timescales
 - **Adversarial Testing**: Comprehensive robustness evaluation with gradient-based attacks
+- **Advanced Attack Strategies**: 5 sophisticated attack methods (gradient, manifold, ensemble, temporal, false memory)
+- **Statistical Robustness**: Bootstrap confidence intervals for mutual information estimation
+- **Security Assessment**: Automated risk analysis and mitigation recommendations
 - **ACP Integration**: Seamless integration with Adversarial Counterfactual Planning for proactive defense
+
+### 🆕 Advanced Adversarial Testing
+
+The framework now includes **AdvancedAdversarialTester** with:
+
+- **5 Attack Strategies**: Gradient-based, manifold projection, ensemble disagreement, temporal coherence, false memory induction
+- **Bootstrap MI Estimation**: Statistical confidence intervals for robustness metrics
+- **Comprehensive Reporting**: Security assessment with operational implications and mitigation strategies
+- **FNR Calibration**: Integration with false negative rate thresholds
+- **Advanced Visualization**: Multi-panel plots showing evasion rates, degradation curves, and risk assessment
+
+See [ADVANCED_TESTING.md](ADVANCED_TESTING.md) for detailed documentation.
 
 ## 🏗️ Architecture
 

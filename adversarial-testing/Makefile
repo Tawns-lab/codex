@@ -6,14 +6,15 @@ help:
 	@echo "Adversarial Forensic Testing - Available Commands"
 	@echo "=================================================="
 	@echo ""
-	@echo "  make install      - Install dependencies"
-	@echo "  make fixtures     - Generate test fixtures"
-	@echo "  make demo         - Run simple demo"
-	@echo "  make test         - Run unit tests"
-	@echo "  make full-test    - Run full adversarial test suite"
-	@echo "  make clean        - Clean generated files"
-	@echo "  make lint         - Run code linters"
-	@echo "  make format       - Format code"
+	@echo "  make install        - Install dependencies"
+	@echo "  make fixtures       - Generate test fixtures"
+	@echo "  make demo           - Run simple demo"
+	@echo "  make test           - Run unit tests"
+	@echo "  make full-test      - Run full adversarial test suite"
+	@echo "  make advanced-test  - Run advanced adversarial tests (NEW!)"
+	@echo "  make clean          - Clean generated files"
+	@echo "  make lint           - Run code linters"
+	@echo "  make format         - Format code"
 	@echo ""
 
 install:
@@ -36,6 +37,11 @@ full-test:
 	@echo "Running full adversarial test suite..."
 	@echo "This may take several minutes..."
 	cd examples && python run_full_test_suite.py --output-dir ../test_results
+
+advanced-test:
+	@echo "Running advanced adversarial test suite..."
+	@echo "This includes sophisticated attack strategies..."
+	cd examples && python run_advanced_adversarial_tests.py --output-dir ../test_results/advanced
 
 clean:
 	@echo "Cleaning generated files..."

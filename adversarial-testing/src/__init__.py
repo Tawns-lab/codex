@@ -33,7 +33,11 @@ from .enhanced_acp_planner import (
     InterventionType
 )
 
-__version__ = '0.1.0'
+from .advanced_adversarial_tester import (
+    AdvancedAdversarialTester
+)
+
+__version__ = '0.2.0'
 
 __all__ = [
     # Forensic Engine
@@ -45,6 +49,7 @@ __all__ = [
     'PerturbationGenerator',
     'PerturbationConfig',
     'AdversarialTestSuite',
+    'AdvancedAdversarialTester',
     'estimate_mutual_information',
     'estimate_mutual_information_simple',
 
