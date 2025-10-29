@@ -33,7 +33,15 @@ fn default_login() -> bool {
 }
 
 fn default_shell() -> String {
-    "/bin/bash".to_string()
+    #[cfg(target_os = "windows")]
+    {
+        // On Windows, prefer PowerShell 7+ (pwsh.exe) over legacy PowerShell
+        "pwsh.exe".to_string()
+    }
+    #[cfg(not(target_os = "windows"))]
+    {
+        "/bin/bash".to_string()
+    }
 }
 
 #[derive(Debug, Deserialize, Serialize)]

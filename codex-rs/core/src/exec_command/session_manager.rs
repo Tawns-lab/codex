@@ -266,10 +266,24 @@ async fn create_exec_command_session(
     })?;
 
     // Spawn a shell into the pty
-    let mut command_builder = CommandBuilder::new(shell);
-    let shell_mode_opt = if login { "-lc" } else { "-c" };
-    command_builder.arg(shell_mode_opt);
-    command_builder.arg(cmd);
+    let mut command_builder = CommandBuilder::new(&shell);
+
+    // Check if this is PowerShell based on the shell name
+    let is_powershell = shell.to_lowercase().contains("pwsh")
+        || shell.to_lowercase().contains("powershell");
+
+    if is_powershell {
+        // PowerShell uses different flags: -NoProfile -Command
+        // Note: PowerShell doesn't have an equivalent to bash's login flag
+        command_builder.arg("-NoProfile");
+        command_builder.arg("-Command");
+        command_builder.arg(&cmd);
+    } else {
+        // Bash/Zsh style: -lc or -c
+        let shell_mode_opt = if login { "-lc" } else { "-c" };
+        command_builder.arg(shell_mode_opt);
+        command_builder.arg(&cmd);
+    }
 
     let mut child = pair.slave.spawn_command(command_builder)?;
     // Obtain a killer that can signal the process independently of `.wait()`.
